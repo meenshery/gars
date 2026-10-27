@@ -18,7 +18,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "json", "2.21.2"
 gem "devise", "5.0.4"
-gem "cancancan", "3.6.1"
+gem "cancancan", "3.7.0"
 gem "csv"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
