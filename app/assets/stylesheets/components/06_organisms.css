@@ -1,0 +1,180 @@
+/* ambient background */
+
+.O_AmbientBackground {
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+  background: var(--gradient-ambient);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.O_AmbientBackground::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-ambient-glow);
+  filter: blur(24px);
+}
+
+.O_AmbientBackground::after {
+  content: "";
+  position: absolute;
+  top: 22%;
+  left: -29%;
+  width: 67%;
+  height: 115%;
+  border-right: 48px solid var(--color-ambient-curve);
+  border-radius: 50%;
+  filter: blur(35px);
+}
+
+/* sticky ambient background */
+
+.O_AmbientBackground--sticky {
+  position: sticky;
+  inset: auto;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100svh;
+  margin-bottom: -100svh;
+}
+
+/* splash content */
+
+.O_SplashContent {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  padding:
+    var(--page-padding-y)
+    clamp(20px, calc(68px - 2.5vw), 36px)
+    var(--page-padding-y)
+    var(--page-padding-x);
+}
+
+/* splash best from redaction */
+
+.O_BestFromRedaction {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* about hero */
+
+.O_AboutHero {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  width: 100%;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+/* info about service */
+
+.O_InfoAboutService {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 1.323vw, 26px);
+  row-gap: clamp(106px, 8.73vw, 168px);
+  width: calc(100% - 7.936vw);
+  margin: 0 auto;
+  padding-top: clamp(160px, 13.228vw, 200px);
+}
+
+/* recommended */
+
+.O_Recomended {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 1.323vw, 26px);
+  width: calc(100% - 7.936vw);
+  margin: 0 auto;
+  padding: clamp(160px, 13.228vw, 200px) 0;
+}
+
+/* login form */
+
+.O_LoginForm {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 32px;
+  width: min(100%, 514px);
+  padding: 32px;
+  border: 1px solid var(--color-glass-border);
+  border-radius: 20px;
+  background: var(--color-glass-surface);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  box-shadow: var(--shadow-glass);
+}
+
+/* admin background and sidebar */
+
+.O_AmbientBackground--fixed {
+  position: fixed;
+}
+
+.O_AdminSidebar {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 180px;
+}
+
+/* admin pages and table */
+
+.O_AdminPosts,
+.O_AdminGames,
+.O_AdminSubscriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+.O_AdminTable {
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: rgba(60, 73, 79, 0.3);
+}
+
+/* post editor */
+
+.O_PostEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: min(100%, 686px);
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(60, 73, 79, 0.3);
+}

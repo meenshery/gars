@@ -1,0 +1,284 @@
+/* logo and social links */
+
+.A_Logo,
+.A_SocialLink {
+  transition: opacity var(--duration-base) ease;
+}
+
+.A_LogoLink:hover .A_Logo,
+.A_SocialLink:hover {
+  opacity: 0.65;
+}
+
+/* main button */
+
+.A_Button {
+  transition:
+    background-position var(--duration-slow) ease,
+    transform var(--duration-base) ease;
+}
+
+.A_Button:hover {
+  background-position: 100% 50%;
+  transform: translateY(-1px);
+}
+
+.A_Button:active {
+  transform: translateY(0);
+}
+
+/* scroll */
+
+.M_ScrollButton {
+  animation: scroll-bounce 2.5s linear infinite;
+}
+
+@keyframes scroll-bounce {
+  0% {
+    translate: 0 0;
+  }
+
+  20% {
+    translate: 0 -10px;
+  }
+
+  40% {
+    translate: 0 0;
+  }
+
+  100% {
+    translate: 0 0;
+  }
+}
+
+/* input */
+
+.A_ButtonInField,
+.A_EmailInput,
+.A_FeedbackInput {
+  transition:
+    transform var(--duration-base) linear,
+    opacity var(--duration-base) ease;
+}
+
+.M_Input::before {
+  transition: opacity var(--duration-base) linear;
+}
+
+.M_Input:hover::before,
+.M_Input:focus-within::before {
+  opacity: 1;
+}
+
+.M_Input:hover .A_ButtonInField:not(:disabled),
+.M_Input:focus-within .A_ButtonInField:not(:disabled) {
+  transform: translateX(-3px);
+}
+
+.M_Input:hover .A_EmailInput,
+.M_Input:focus-within .A_EmailInput {
+  transform: translateX(1px);
+}
+
+.M_Input--feedback:hover .A_ButtonInField--feedback:not(:disabled),
+.M_Input--feedback:focus-within .A_ButtonInField--feedback:not(:disabled) {
+  transform: translateY(-50%) translateX(-3px);
+}
+
+.M_Input--feedback:hover .A_FeedbackInput,
+.M_Input--feedback:focus-within .A_FeedbackInput {
+  transform: translateX(1px);
+}
+
+/* checkbox */
+
+.A_CheckboxInput {
+  transition:
+    border-color var(--duration-base) ease,
+    background var(--duration-base) ease;
+}
+
+/* ambient background */
+
+.O_AmbientBackground {
+  transform:
+    translate3d(
+      var(--gradient-x, 0px),
+      var(--gradient-y, 0px),
+      0
+    )
+    scale(1.08)
+    rotate(var(--gradient-rotate, 0deg));
+  will-change: transform;
+}
+
+.O_AmbientBackground::before {
+  transform:
+    translate3d(
+      var(--glow-x, 0px),
+      var(--glow-y, 0px),
+      0
+    )
+    rotate(14deg);
+}
+
+.O_AmbientBackground::after {
+  transform:
+    translate3d(
+      var(--curve-x, 0px),
+      var(--curve-y, 0px),
+      0
+    )
+    rotate(-18deg);
+}
+
+/* splash articles */
+
+.C_ArticlesOfTheWeek {
+  animation: articles-of-the-week-shift 10s linear infinite alternate;
+}
+
+@keyframes articles-of-the-week-shift {
+  from {
+    transform:
+      translateY(0)
+      scale(1.087);
+  }
+
+  to {
+    transform:
+      translateY(calc(-100% + 100svh))
+      scale(1);
+  }
+}
+
+/* recommended carousel */
+
+.Q_PreviewRecommended {
+  animation: recommended-orbit 12s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.Q_PreviewRecommended--01 {
+  animation-delay: 0s;
+}
+
+.Q_PreviewRecommended--02 {
+  animation-delay: -3s;
+}
+
+.Q_PreviewRecommended--03 {
+  animation-delay: -6s;
+}
+
+.Q_PreviewRecommended--04 {
+  animation-delay: -9s;
+}
+
+@keyframes recommended-orbit {
+  0%,
+  18% {
+    z-index: 3;
+    opacity: 1;
+    transform:
+      translate3d(-50%, -50%, 55px)
+      rotateY(0deg)
+      scale(1);
+  }
+
+  25%,
+  43% {
+    z-index: 2;
+    opacity: 1;
+    transform:
+      translate3d(40%, -50%, -70px)
+      rotateY(52deg)
+      scale(0.98);
+  }
+
+  50%,
+  68% {
+    z-index: 1;
+    opacity: 0;
+    transform:
+      translate3d(-50%, -50%, -260px)
+      rotateY(180deg)
+      scale(0.86);
+  }
+
+  75%,
+  93% {
+    z-index: 2;
+    opacity: 1;
+    transform:
+      translate3d(-140%, -50%, -70px)
+      rotateY(308deg)
+      scale(0.98);
+  }
+
+  100% {
+    z-index: 3;
+    opacity: 1;
+    transform:
+      translate3d(-50%, -50%, 55px)
+      rotateY(360deg)
+      scale(1);
+  }
+}
+
+/* reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .A_Logo,
+  .A_SocialLink,
+  .A_Button,
+  .A_ButtonInField,
+  .A_EmailInput,
+  .A_FeedbackInput,
+  .A_CheckboxInput,
+  .M_Input::before {
+    transition: none;
+  }
+
+  .M_ScrollButton,
+  .C_ArticlesOfTheWeek,
+  .Q_PreviewRecommended {
+    animation: none;
+  }
+
+  .Q_PreviewRecommended--01 {
+    z-index: 2;
+    opacity: 1;
+    transform:
+      translate3d(-142%, -50%, -75px)
+      rotateY(-58deg)
+      scale(0.98);
+  }
+
+  .Q_PreviewRecommended--02 {
+    z-index: 3;
+    opacity: 1;
+    transform:
+      translate3d(-50%, -50%, 55px)
+      rotateY(0deg)
+      scale(1);
+  }
+
+  .Q_PreviewRecommended--03 {
+    z-index: 2;
+    opacity: 1;
+    transform:
+      translate3d(42%, -50%, -75px)
+      rotateY(58deg)
+      scale(0.98);
+  }
+
+  .Q_PreviewRecommended--04 {
+    z-index: 1;
+    opacity: 0;
+  }
+
+  .O_AmbientBackground {
+    will-change: auto;
+  }
+}

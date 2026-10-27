@@ -1,0 +1,33 @@
+<aside class="O_AdminSidebar">
+  <nav class="C_MenuProfile" aria-label="Навигация админка">
+    <%= link_to admin_posts_path,
+        class: "A_Button A_Button--menu",
+        aria: { current: ("page" if controller_path == "admin/posts") } do %>
+      <%= image_tag "icons/bookmark.svg", class: "Q_IconIntoButton", alt: "" %>
+      <span>Посты</span>
+    <% end %>
+
+    <%= link_to admin_games_path,
+        class: "A_Button A_Button--menu",
+        aria: { current: ("page" if controller_path == "admin/games") } do %>
+      <%= image_tag "icons/games.svg", class: "Q_IconIntoButton", alt: "" %>
+      <span>Игры</span>
+    <% end %>
+
+    <%= link_to admin_subscriptions_path,
+        class: "A_Button A_Button--menu",
+        aria: { current: ("page" if controller_path == "admin/subscriptions") } do %>
+      <%= image_tag "icons/users.svg", class: "Q_IconIntoButton", alt: "" %>
+      <span>Подписки</span>
+    <% end %>
+  </nav>
+
+  <div class="W_AdminSidebarActions">
+    <%= link_to "На сайт", root_path, class: "A_Button A_Button--menu" %>
+
+    <%= button_to "Выйти",
+        destroy_user_session_path,
+        method: :delete,
+        class: "A_Button A_Button--menu" %>
+  </div>
+</aside>

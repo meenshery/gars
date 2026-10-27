@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= content_for(:title) || "GARS — администратор" %></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="application-name" content="GARS">
+    <meta name="theme-color" content="#03020B">
+    <meta name="color-scheme" content="dark">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
+
+    <%= favicon_link_tag "branding/favicon.svg", type: "image/svg+xml" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if notice.present? %>
+      <p class="A_FlashMessage"><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+      <p class="A_FlashMessage"><%= alert %></p>
+    <% end %>
+
+    <div class="S_Admin" data-controller="ambient-background">
+      <div class="O_AmbientBackground O_AmbientBackground--fixed"
+           data-ambient-background-target="layer"
+           aria-hidden="true"></div>
+
+      <%= render "application/admin_header" %>
+
+      <div class="W_AdminWorkspace">
+        <%= render "application/admin_sidebar" %>
+
+        <div class="W_AdminContent">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<% content_for :title, "О проекте — GARS" %>
+<% content_for :description, "GARS — медиа-сервис, который поможет найти подходящую игру." %>
+
+<main class="S_About">
+  <section class="O_AboutHero" style="--about-texture: url('<%= asset_path("about/about-texture.webp") %>');">
+    <%= video_tag "about-banner.webm",
+                  class: "Q_AboutVideo",
+                  autoplay: true,
+                  muted: true,
+                  loop: true,
+                  playsinline: true,
+                  preload: "auto" %>
+
+    <div class="Q_AboutShade" aria-hidden="true"></div>
+    <div class="Q_AboutTexture" aria-hidden="true"></div>
+
+    <div class="W_AboutHeroContent">
+      <%= render "application/main_header" %>
+
+      <div class="M_HeroDescription">
+        <h1 class="A_Heading A_Heading--banner">
+          Твоя любимая<br>
+          игра уже у нас
+        </h1>
+
+        <p class="A_Text A_Text--large">
+          GARS — медиа-сервис, который поможет найти подходящую игру
+        </p>
+      </div>
+
+      <div class="M_ScrollButton" aria-hidden="true">
+        <span class="A_Text A_Text--adds">scroll</span>
+        <%= image_tag "icons/arrow-down.svg", class: "A_ScrollArrow", alt: "", draggable: false %>
+      </div>
+    </div>
+  </section>
+
+  <div class="W_AboutContent" data-controller="ambient-background">
+    <div class="O_AmbientBackground O_AmbientBackground--sticky"
+         data-ambient-background-target="layer"
+         aria-hidden="true"></div>
+
+    <section class="O_InfoAboutService">
+      <div class="C_AboutStatement">
+        <p class="A_Heading A_Heading--h1">
+          Мы создали GARS вокруг интересов игроков:<br>
+          умные рекомендации помогают находить<br>
+          подходящие игры, а опыт сообщества —<br>
+          лучше понимать, чего от них ждать.
+        </p>
+
+        <p class="A_Heading A_Heading--h1 A_Heading--muted">
+          Наш медиа-сервис воплощает любопытство,<br>
+          тягу к новым мирам и радость от той самой<br>
+          удачной находки.
+        </p>
+      </div>
+
+      <div class="M_AboutDetails">
+        <p class="A_Text">
+          Умная система GARS помогает найти игру<br>
+          под конкретный момент.
+        </p>
+
+        <p class="A_Text">
+          Здесь можно найти разборы новинок,<br>
+          делиться собственными впечатлениями<br>
+          и собирать тематические подборки.
+        </p>
+      </div>
+    </section>
+
+    <section class="O_Recomended">
+      <div class="M_PlayRecomendedSection">
+        <div class="C_PreviewRecommended" aria-hidden="true">
+          <div class="Q_PreviewRecommended Q_PreviewRecommended--01">
+            <%= image_tag "about/about-article-cover_01.webp", alt: "", draggable: false %>
+          </div>
+
+          <div class="Q_PreviewRecommended Q_PreviewRecommended--02">
+            <%= image_tag "about/about-article-cover_02.webp", alt: "", draggable: false %>
+          </div>
+
+          <div class="Q_PreviewRecommended Q_PreviewRecommended--03">
+            <%= image_tag "about/about-article-cover_03.webp", alt: "", draggable: false %>
+          </div>
+
+          <div class="Q_PreviewRecommended Q_PreviewRecommended--04">
+            <%= image_tag "about/about-article-cover_01.webp", alt: "", draggable: false %>
+          </div>
+        </div>
+
+        <div class="M_SpecialChapterInfo">
+          <h2 class="A_Heading A_Heading--special">
+            Система рекомендаций
+          </h2>
+
+          <p class="A_Text A_Text--large">
+            GARS подбирает игры по настроению, интересам, жанру<br>
+            и темпу, а вы можете его корректировать как хотите
+          </p>
+        </div>
+
+        <%= link_to "подобрать игру",
+                    "https://t.me/garsmedia",
+                    class: "A_Button",
+                    target: "_blank",
+                    rel: "noopener noreferrer" %>
+      </div>
+    </section>
+  </div>
+  <%= render "application/main_footer" %>
+</main>

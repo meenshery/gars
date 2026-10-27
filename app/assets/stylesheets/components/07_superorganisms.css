@@ -1,0 +1,59 @@
+/* splash */
+
+.S_Splash {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.S_Splash::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background-image: var(--splash-texture);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* about */
+
+.S_About {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  background: var(--color-background);
+}
+
+/* login */
+
+.S_Login {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100svh;
+  padding: 100px 20px;
+  overflow: clip;
+  background: var(--color-background);
+}
+
+/* admin */
+
+.S_Admin {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100svh;
+  overflow-x: clip;
+  background: var(--color-background);
+}

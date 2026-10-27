@@ -1,0 +1,425 @@
+@media (max-width: 900px) {
+  /* splash */
+
+  .S_Splash {
+    display: block;
+    height: auto;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  .S_Splash .O_SplashContent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: max(884px, 100svh);
+    padding: 32px 24px;
+  }
+
+  .S_Splash .M_SplashHeader {
+    flex: 0 0 auto;
+  }
+
+  .S_Splash .M_SplashHeader .A_Logo {
+    width: 115px;
+    height: 30px;
+  }
+
+  .S_Splash .W_SplashIntro {
+    align-self: stretch;
+    gap: 28px;
+    max-width: none;
+    margin-top: 72px;
+  }
+
+  .S_Splash .W_SplashIntro .A_Heading--special {
+    max-width: 342px;
+    font-size: clamp(36px, 11.03vw, 43px);
+    line-height: clamp(39px, 11.54vw, 45px);
+  }
+
+  .S_Splash .W_SplashIntro .A_Heading--special br {
+    display: none;
+  }
+
+  .S_Splash .W_SplashIntro > .A_Button {
+    width: fit-content;
+    height: 44px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .S_Splash .W_SplashBottom {
+    gap: 24px;
+    margin-top: auto;
+    padding-top: 48px;
+  }
+
+  .S_Splash .W_SplashBottom > .A_Text {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .S_Splash .W_SplashActions {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .S_Splash #new_subscription {
+    order: -1;
+  }
+
+  .S_Splash .W_SubscriptionArea {
+    gap: 0;
+  }
+
+  .S_Splash .W_SubscriptionArea .M_Input {
+    height: 54px;
+    min-height: 54px;
+    padding: 5px 5px 5px 10px;
+  }
+
+  .S_Splash .A_EmailInput {
+    padding: 0;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .S_Splash .W_SubscriptionArea .A_ButtonInField {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border-radius: 10px;
+  }
+
+  .S_Splash .W_SubscriptionArea .A_ButtonInField img {
+    width: 6px;
+    height: 12px;
+    transform: none;
+  }
+
+  .S_Splash .C_ConsentList {
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .S_Splash .M_ConsentCheckbox {
+    gap: 10px;
+    width: 100%;
+  }
+
+  .S_Splash .M_ConsentCheckbox .A_Text {
+    flex: 1;
+    min-width: 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .S_Splash .A_CheckboxInput {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+  }
+
+  .S_Splash #subscription_error .A_Text {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .S_Splash .W_MediaPlace {
+    gap: 24px;
+  }
+
+  .S_Splash .M_Socials {
+    gap: 16px;
+  }
+
+  .S_Splash .A_SocialLink {
+    width: 40px;
+    height: 40px;
+  }
+
+  .S_Splash .A_Text--legal {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .S_Splash .M_SubscriptionSuccess {
+    gap: 8px;
+  }
+
+  .S_Splash .M_SubscriptionSuccess .A_Heading--h2 {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .S_Splash .M_SubscriptionSuccess > .A_Text {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .S_Splash .O_BestFromRedaction {
+    display: none;
+  }
+
+  /* about: hero */
+
+  .S_About .O_AboutHero {
+    height: 700px;
+    min-height: 700px;
+  }
+
+  .S_About .W_AboutHeroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 24px;
+  }
+
+  .S_About .M_Header {
+    justify-content: flex-start;
+    flex: 0 0 auto;
+  }
+
+  .S_About .M_Header .A_Logo {
+    width: 115px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  .S_About .M_HeroDescription {
+    align-self: stretch;
+    gap: 28px;
+    width: 100%;
+    max-width: none;
+    margin-top: 185px;
+  }
+
+  .S_About .M_HeroDescription .A_Heading--banner {
+    width: 100%;
+    max-width: 342px;
+    font-size: clamp(36px, calc(10vw + 4px), 43px);
+    line-height: 1.05;
+  }
+
+  .S_About .M_HeroDescription .A_Text--large {
+    width: 100%;
+    max-width: 342px;
+    font-size: 15px;
+    line-height: 18px;
+    white-space: normal;
+  }
+
+  .S_About .M_ScrollButton {
+    display: none;
+  }
+
+  /* about: text */
+
+  .S_About .O_InfoAboutService {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    width: 100%;
+    margin: 0;
+    padding: 152px 24px 40px;
+  }
+
+  .S_About .C_AboutStatement {
+    gap: 48px;
+    min-width: 0;
+  }
+
+  .S_About .C_AboutStatement .A_Heading--h1 {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .S_About .C_AboutStatement br,
+  .S_About .M_AboutDetails br,
+  .S_About .M_SpecialChapterInfo .A_Text br {
+    display: none;
+  }
+
+  .S_About .M_AboutDetails {
+    gap: 18px;
+    min-width: 0;
+    padding-top: 20px;
+  }
+
+  .S_About .M_AboutDetails .A_Text {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  /* about: recommendations */
+
+  .S_About .O_Recomended {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 128px 24px 88px;
+  }
+
+  .S_About .M_PlayRecomendedSection {
+    gap: 24px;
+    min-width: 0;
+  }
+
+  .S_About .C_PreviewRecommended {
+    width: 100%;
+    height: 224px;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  .S_About .Q_PreviewRecommended {
+    width: min(75%, 256px);
+    border-radius: 20px;
+  }
+
+  .S_About .M_SpecialChapterInfo {
+    gap: 24px;
+    max-width: 342px;
+  }
+
+  .S_About .M_SpecialChapterInfo .A_Heading--special {
+    width: 100%;
+    font-size: 31px;
+    line-height: 1.1;
+  }
+
+  .S_About .M_SpecialChapterInfo .A_Text--large {
+    width: 100%;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .S_About .M_PlayRecomendedSection > .A_Button {
+    width: fit-content;
+    height: 44px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  /* about: footer */
+
+  .S_About .C_MainFooter {
+    padding: 48px 20px 0;
+  }
+
+  .S_About .W_MainFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+    width: 100%;
+    height: auto;
+    padding: 24px;
+    border: 0;
+    border-radius: 24px;
+    background: #10121b;
+  }
+
+  .S_About .W_MainFooter .A_LogoLink {
+    width: fit-content;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
+  .S_About .W_MainFooter .A_Logo {
+    width: 92px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .S_About .W_MediaPlace--footer {
+    gap: 12px;
+    width: 100%;
+    height: auto;
+  }
+
+  .S_About .W_MainFooter .A_FooterLabel {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .S_About .W_MainFooter .M_Socials {
+    gap: 24px;
+  }
+
+  .S_About .W_MainFooter .A_SocialLink {
+    width: 34px;
+    height: 34px;
+  }
+
+  .S_About .W_FeedbackPlace {
+    gap: 8px;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+  }
+
+  .S_About .M_FeedbackForm {
+    min-width: 0;
+  }
+
+  .S_About .M_Input--feedback {
+    height: 48px;
+    min-height: 48px;
+    padding: 5px 5px 5px 8px;
+  }
+
+  .S_About .A_FeedbackInput {
+    padding: 0 44px 0 0;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .S_About .M_Input--feedback .A_ButtonInField--feedback {
+    right: 5px;
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    min-height: 34px;
+    flex: 0 0 34px;
+    border-radius: 10px;
+  }
+
+  .S_About .A_ButtonInField--feedback img {
+    width: 6px;
+    height: 12px;
+    transform: none;
+  }
+
+  /* admin */
+
+  .W_AdminWorkspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .O_AdminSidebar {
+    position: static;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .C_MenuProfile,
+  .W_AdminSidebarActions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .C_MenuProfile .A_Button--menu,
+  .W_AdminSidebarActions > .A_Button--menu,
+  .W_AdminSidebarActions form {
+    width: auto;
+  }
+}

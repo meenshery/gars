@@ -1,0 +1,506 @@
+/* logo */
+
+.A_LogoLink {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.A_Logo {
+  width: clamp(88px, 7.4vw, 112px);
+  height: auto;
+}
+
+.A_Logo--footer {
+  display: block;
+  width: 67.073px;
+  height: 17.158px;
+}
+
+/* heading */
+
+.A_Heading {
+  margin: 0;
+  line-height: normal;
+}
+
+.A_Heading--special {
+  font-size: var(--font-size-special);
+  font-weight: 700;
+}
+
+.A_Heading--h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 400;
+}
+
+.A_Heading--h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 400;
+}
+
+.A_Heading--banner {
+  font-size: var(--font-size-banner);
+  font-weight: 700;
+  line-height: var(--line-height-banner);
+  text-align: center;
+}
+
+.A_Heading--muted {
+  color: var(--color-blue-slate);
+}
+
+/* text */
+
+.A_Text {
+  margin: 0;
+  font-size: var(--font-size-text);
+  font-weight: 400;
+  line-height: normal;
+}
+
+.A_Text--large {
+  font-size: var(--font-size-h2);
+}
+
+.A_Text--adds {
+  font-size: var(--font-size-adds);
+}
+
+.A_Text--legal {
+  font-size: var(--font-size-legal);
+  color: var(--color-blue-slate);
+}
+
+.A_Text--error {
+  color: var(--color-error);
+}
+
+.A_TextAccent {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* footer text */
+
+.A_FooterLabel {
+  margin: 0;
+  color: var(--color-blue-slate, #58727f);
+  font-family: "Nagel", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+/* primary button */
+
+.A_Button {
+  display: flex;
+  height: 39px;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-adds);
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-white);
+  background: var(--gradient-accent);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+}
+
+/* socials */
+
+.A_SocialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(34px, 2.65vw, 40px);
+  height: clamp(34px, 2.65vw, 40px);
+  flex-shrink: 0;
+}
+
+.A_SocialIcon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* scroll arrow */
+
+.A_ScrollArrow {
+  display: block;
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}
+
+/* email */
+
+.A_EmailInput {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0 10px;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font-size: var(--font-size-text);
+  color: var(--color-white);
+  caret-color: var(--color-white);
+  background: transparent;
+}
+
+.A_EmailInput::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.A_EmailInput:-webkit-autofill,
+.A_EmailInput:-webkit-autofill:hover,
+.A_EmailInput:-webkit-autofill:focus,
+.A_EmailInput:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--color-white);
+  -webkit-background-clip: text;
+  background-clip: text;
+  caret-color: var(--color-white);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* feedback input */
+
+.A_FeedbackInput {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0 48px 0 12px;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font-family: "Nagel", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  color: var(--color-white);
+  caret-color: var(--color-white);
+  background: transparent;
+}
+
+.A_FeedbackInput::placeholder {
+  color: var(--color-blue-slate, #58727f);
+  opacity: 1;
+}
+
+/* submit button */
+
+.A_ButtonInField {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(36px, 2.65vw, 40px);
+  height: clamp(36px, 2.65vw, 40px);
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--gradient-accent-reverse);
+  opacity: 0.5;
+  cursor: default;
+}
+
+.A_ButtonInField img {
+  display: block;
+  width: 9px;
+  height: 17px;
+  transform: translateX(2px);
+}
+
+.M_Input.is-valid .A_ButtonInField {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.A_ButtonInField--feedback {
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  padding: 0;
+  flex: 0 0 34px;
+  border-radius: 8px;
+}
+
+/* checkbox */
+
+.A_CheckboxInput {
+  width: clamp(18px, 1.32vw, 20px);
+  height: clamp(18px, 1.32vw, 20px);
+  flex: 0 0 clamp(18px, 1.32vw, 20px);
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--color-white);
+  border-radius: var(--radius-xs);
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.A_CheckboxInput--data:checked {
+  border-color: transparent;
+  background: var(--gradient-accent);
+}
+
+.A_CheckboxInput--notifications:checked {
+  border-color: transparent;
+  background: var(--gradient-accent-reverse);
+}
+
+.A_CheckboxInput:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* flash */
+
+.A_FlashMessage {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  z-index: 100;
+  padding: 12px 20px;
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  background: rgba(3, 2, 11, 0.85);
+  transform: translateX(-50%);
+}
+
+/* focus */
+
+.A_LogoLink:focus-visible,
+.A_Button:focus-visible,
+.A_ButtonInField:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+/* form atoms */
+
+.A_Text--muted {
+  color: var(--color-text-muted);
+}
+
+.A_Input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0 8px;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font-size: 19px;
+  line-height: normal;
+  color: var(--color-white);
+  caret-color: var(--color-white);
+  background: transparent;
+}
+
+.A_Input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.A_Input:-webkit-autofill,
+.A_Input:-webkit-autofill:hover,
+.A_Input:-webkit-autofill:focus,
+.A_Input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--color-white);
+  -webkit-background-clip: text;
+  background-clip: text;
+  caret-color: var(--color-white);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.A_Button--form {
+  width: 100%;
+  appearance: none;
+  border: 0;
+  font-size: var(--font-size-text);
+  cursor: pointer;
+}
+
+.A_Button--secondary {
+  border: 1px solid var(--color-glass-border);
+  font-size: var(--font-size-text);
+  background: var(--color-glass-surface);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  box-shadow: var(--shadow-glass);
+}
+
+/* admin menu */
+
+.A_Button.A_Button--menu {
+  width: 100%;
+  justify-content: flex-start;
+  border: 1px solid transparent;
+  font-size: var(--font-size-text);
+  text-align: left;
+  background: rgba(88, 114, 127, 0.2);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-base) ease,
+    border-color var(--duration-base) ease,
+    box-shadow var(--duration-base) ease;
+}
+
+.A_Button.A_Button--menu:hover,
+.A_Button.A_Button--menu:focus-visible,
+.A_Button.A_Button--menu[aria-current="page"] {
+  border-color: var(--color-glass-border);
+  background: rgba(88, 114, 127, 0.3);
+  box-shadow: var(--shadow-glass);
+  transform: none;
+}
+
+/* admin controls */
+
+.A_Button--icon {
+  width: 40px;
+  min-width: 40px;
+  height: 39px;
+  padding: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.A_Input--search {
+  padding: 0;
+  font-size: var(--font-size-text);
+}
+
+.A_ButtonInField--search {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border-radius: 8px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.A_Select {
+  height: 39px;
+  max-width: 100%;
+  padding: 0 36px 0 20px;
+  appearance: none;
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-text);
+  color: var(--color-white);
+  background-color: var(--color-glass-surface);
+  background-image: var(--select-arrow);
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  cursor: pointer;
+}
+
+.A_Select option {
+  color: var(--color-white);
+  background: #171922;
+}
+
+.A_Select:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* post title and status */
+
+.A_PostTitle {
+  max-width: 235px;
+  overflow-wrap: anywhere;
+  font-size: var(--font-size-adds);
+  line-height: 1.2;
+}
+
+.A_PostTitle:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.A_Status {
+  display: inline-flex;
+  padding: 3px 5px;
+  border-radius: var(--radius-xs);
+  font-size: var(--font-size-adds);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.A_Status--draft {
+  background: var(--color-blue-slate);
+}
+
+.A_Status--review {
+  background: #805000;
+}
+
+.A_Status--published {
+  background: #355b28;
+}
+
+/* post editor fields */
+
+.A_Input--editor {
+  display: block;
+  height: auto;
+  min-height: 52px;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  font-size: var(--font-size-text);
+  line-height: 1.45;
+  background: rgba(60, 73, 79, 0.5);
+}
+
+.A_Input--editor:focus {
+  border-color: var(--color-glass-border);
+}
+
+.A_Input--title {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.A_Input--body {
+  min-height: 320px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.A_Select--editor {
+  width: 100%;
+  height: 52px;
+  border-color: transparent;
+  border-radius: 20px;
+  background-color: rgba(60, 73, 79, 0.5);
+}
+
+.A_CoverInput {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}

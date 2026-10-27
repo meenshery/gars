@@ -1,0 +1,32 @@
+<% content_for :title, "Подписки — GARS admin" %>
+
+<main class="O_AdminSubscriptions">
+  <header class="W_AdminPageHeader">
+    <h1 class="A_Heading A_Heading--h1">Подписки</h1>
+    <p class="A_Text A_Text--adds A_Text--muted">Всего: <%= @subscriptions.count %></p>
+  </header>
+
+  <section class="O_AdminTable" aria-label="Список подписок">
+    <% if @subscriptions.any? %>
+      <table class="C_AdminListTable C_AdminListTable--subscriptions">
+        <thead>
+          <tr>
+            <th scope="col">email</th>
+            <th scope="col">дата подписки</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @subscriptions.each do |subscription| %>
+            <tr>
+              <td><%= subscription.email %></td>
+              <td><time datetime="<%= subscription.created_at.iso8601 %>"><%= subscription.created_at.strftime("%d.%m.%Y %H:%M") %></time></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="A_Text">Подписок пока нет</p>
+    <% end %>
+  </section>
+</main>

@@ -1,0 +1,293 @@
+/* splash header */
+
+.M_SplashHeader {
+  width: fit-content;
+}
+
+/* main header */
+
+.M_Header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* hero description */
+
+.M_HeroDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+  gap: 40px;
+  width: max-content;
+  max-width: 100%;
+  text-align: center;
+}
+
+.M_HeroDescription .A_Text--large {
+  width: max-content;
+  max-width: none;
+  white-space: nowrap;
+}
+
+/* scroll button */
+
+.M_ScrollButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  align-self: end;
+  gap: 10px;
+  width: fit-content;
+  color: var(--color-white);
+  pointer-events: none;
+}
+
+/* about details */
+
+.M_AboutDetails {
+  grid-column: 6 / span 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 1.984vw, 38px);
+  width: 100%;
+}
+
+/* play recommended section */
+
+.M_PlayRecomendedSection {
+  grid-column: 4 / span 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(32px, 2.646vw, 40px);
+  width: 100%;
+}
+
+/* special chapter info */
+
+.M_SpecialChapterInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(24px, 1.984vw, 30px);
+  width: 100%;
+  text-align: center;
+}
+
+/* socials */
+
+.M_Socials {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.2vw, 18px);
+}
+
+/* input */
+
+.M_Input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  height: clamp(48px, 3.57vw, 54px);
+  padding: 6px;
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-glass-surface);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  box-shadow: var(--shadow-glass);
+}
+
+.M_Input::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: var(--gradient-accent-reverse);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.M_Input:hover,
+.M_Input:focus-within {
+  border-color: transparent;
+}
+
+/* consent */
+
+.M_ConsentCheckbox {
+  display: flex;
+  align-items: center;
+  gap: clamp(7px, 0.6vw, 9px);
+  width: fit-content;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* articles background */
+
+.M_ArticlesOfTheWeekBackground {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* subscription success */
+
+.M_SubscriptionSuccess {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: 5px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* feedback form */
+
+/* feedback form */
+
+.M_FeedbackForm {
+  width: 100%;
+}
+
+.M_Input--feedback {
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  border-radius: 10px;
+}
+
+.M_Input--feedback .A_ButtonInField--feedback {
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  transform: translateY(-50%);
+}
+
+/* login navigation */
+
+.M_LoginNavigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: var(--page-padding-y) var(--page-padding-x);
+}
+
+/* form field */
+
+.M_FormField {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* admin header */
+
+.M_AdminHeader {
+  position: relative;
+  z-index: 1;
+  padding: var(--page-padding-y) var(--page-padding-x);
+}
+
+/* admin search */
+
+.M_Input--search {
+  width: auto;
+  max-width: 450px;
+  height: 40px;
+  padding: 4px 4px 4px 10px;
+  flex: 1 1 300px;
+}
+
+/* post preview and actions */
+
+.M_PostPreview {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+  text-align: left;
+}
+
+.M_PostActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* cover upload */
+
+.M_CoverUpload {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 200px;
+  aspect-ratio: 646 / 200;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(60, 73, 79, 0.5);
+}
+
+.M_CoverUpload:focus-within {
+  outline: 2px solid var(--color-glass-border);
+  outline-offset: 3px;
+}
+
+.M_CoverUpload [hidden] {
+  display: none;
+}
+
+/* form errors */
+
+.M_FormErrors,
+.M_FormErrors ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* game preview */
+
+.M_GamePreview {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.M_GamePreview .A_Text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}

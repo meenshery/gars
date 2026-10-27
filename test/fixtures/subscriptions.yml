@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  personal_data_consent: false
+  notifications_consent: false
+
+two:
+  email: MyString
+  personal_data_consent: false
+  notifications_consent: false

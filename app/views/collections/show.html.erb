@@ -6,19 +6,12 @@
       <p><%= @collection.description %></p>
     <% end %>
 
-    <p class="collection-info">
-      Тип: <%= @collection.collection_type %>
-    </p>
+    <p class="collection-info">Тип: <%= @collection.collection_type %></p>
   </div>
 
   <div class="collection-actions">
-    <%= link_to "изменить",
-                edit_collection_path(@collection)%>
-
-    <%= button_to "удалить",
-                  collection_path(@collection),
-                  method: :delete,
-                  data: { turbo_confirm: "удалить коллекцию?" } %>
+    <%= link_to "изменить", edit_collection_path(@collection) %>
+    <%= button_to "удалить", collection_path(@collection), method: :delete, data: { turbo_confirm: "удалить коллекцию?" } %>
   </div>
 </div>
 
@@ -31,18 +24,10 @@
     <% @collection.collection_games.each do |collection_game| %>
       <article class="game-card">
         <div class="game-card-content">
-          <h3>
-            <%= link_to collection_game.game.title,
-                        game_path(collection_game.game) %>
-          </h3>
+          <h3><%= link_to collection_game.game.title, game_path(collection_game.game) %></h3>
+          <p class="game-info"><%= collection_game.game.genres.map(&:name).join(", ") %></p>
 
-          <p class="game-info">
-            <%= collection_game.game.genres.map(&:name).join(", ") %>
-          </p>
-
-          <%= button_to "убрать из коллекции",
-                        collection_game_path(collection_game),
-                        method: :delete %>
+          <%= button_to "убрать из коллекции", collection_game_path(collection_game), method: :delete %>
         </div>
       </article>
     <% end %>
@@ -51,6 +36,4 @@
   <p>В этой коллекции пока нет игр</p>
 <% end %>
 
-<p class="back-link">
-  <%= link_to "обратно к коллекциям", collections_path %>
-</p>
+<p class="back-link"><%= link_to "обратно к коллекциям", collections_path %></p>

@@ -1,78 +1,14 @@
-body {
-  margin: 0;
-  padding: 24px;
-  font-family: Arial, sans-serif;
-}
+@import url("./reset.css");
+@import url("./fonts.css");
+@import url("./basic.css");
 
-.menuBar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
+@import url("./components/01_quarks.css");
+@import url("./components/02_atoms.css");
+@import url("./components/03_molecules.css");
+@import url("./components/04_collections.css");
+@import url("./components/05_wrappers.css");
+@import url("./components/06_organisms.css");
+@import url("./components/07_superorganisms.css");
 
-.menuBar div {
-  display: flex;
-  gap: 24px;
-}
-
-.game-card,
-.collection-card {
-  padding: 16px;
-  border: 1px solid #00000030;
-  border-radius: 8px;
-  max-width: 720px;
-  margin: 24px auto;
-}
-
-.game-info,
-.collection-info {
-  opacity: 0.5;
-  font-size: 14px;
-}
-
-a {
-  color: #1d2c62;
-  text-decoration: none;
-}
-
-.game-page {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.game-page h1 {
-  margin-top: 24px;
-  margin-bottom: 16px;
-  color: #1d2c62;
-}
-
-.game-description {
-  max-width: 720px;
-  font-size: 18px;
-}
-
-.game-details {
-  margin-top: 28px;
-}
-
-.collection-panel,
-.reviews-section {
-  margin-top: 40px;
-}
-
-.collection-form {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.collection-actions,
-.review-header {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.back-link {
-  margin-top: 40px;
-}
+@import url("./animations.css");
+@import url("./adaptive.css");

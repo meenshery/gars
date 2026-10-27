@@ -1,0 +1,69 @@
+<% content_for :title, "Игры — GARS admin" %>
+<% filters_active = params[:query].present? || params[:genre_id].present? || params[:platform_id].present? || params[:tag_id].present? %>
+
+<main class="O_AdminGames">
+  <header class="W_AdminPageHeader">
+    <h1 class="A_Heading A_Heading--h1">Игры</h1>
+    <p class="A_Text A_Text--adds A_Text--muted">Найдено: <%= @games.count %></p>
+  </header>
+
+  <%= form_with url: admin_games_path, method: :get, class: "W_AdminFilters", html: { style: "--select-arrow: url('#{asset_path("icons/arrow-unwrap.svg")}');" } do |form| %>
+    <div class="M_Input M_Input--search">
+      <%= image_tag "icons/search.svg", class: "Q_IconIntoButton Q_IconIntoButton--search", alt: "" %>
+      <%= form.search_field :query, value: params[:query], class: "A_Input A_Input--search", placeholder: "поиск по названию...", aria: { label: "Поиск игр по названию" } %>
+
+      <%= button_tag type: :submit, class: "A_ButtonInField A_ButtonInField--search", aria: { label: "Применить поиск и фильтры" }, title: "Применить поиск и фильтры" do %>
+        <%= image_tag "icons/submit.svg", alt: "" %>
+      <% end %>
+    </div>
+
+    <%= form.collection_select :genre_id, @genres, :id, :name, { selected: params[:genre_id], include_blank: "все жанры" }, class: "A_Select", aria: { label: "Жанр игры" } %>
+    <%= form.collection_select :platform_id, @platforms, :id, :name, { selected: params[:platform_id], include_blank: "все платформы" }, class: "A_Select", aria: { label: "Платформа игры" } %>
+    <%= form.collection_select :tag_id, @tags, :id, :name, { selected: params[:tag_id], include_blank: "все теги" }, class: "A_Select", aria: { label: "Тег игры" } %>
+
+    <% if filters_active %>
+      <%= link_to "Сбросить", admin_games_path, class: "A_Text A_Text--adds A_TextAccent" %>
+    <% end %>
+  <% end %>
+
+  <section class="O_AdminTable" aria-label="Список игр">
+    <% if @games.any? %>
+      <table class="C_AdminListTable C_AdminListTable--games">
+        <thead>
+          <tr>
+            <th scope="col">игра</th>
+            <th scope="col">дата выхода</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @games.each do |game| %>
+            <tr>
+              <td>
+                <div class="M_GamePreview">
+                  <% if game.cover_filename.present? %>
+                    <%= image_tag "games/games_covers/#{game.cover_filename}", class: "Q_GameCover", alt: "", width: 60, height: 60, loading: "lazy" %>
+                  <% else %>
+                    <span class="Q_GameCover Q_GameCover--empty" aria-hidden="true"></span>
+                  <% end %>
+
+                  <p class="A_Text A_Text--adds"><%= game.title %></p>
+                </div>
+              </td>
+
+              <td>
+                <% if game.release_date.present? %>
+                  <time datetime="<%= game.release_date.iso8601 %>"><%= game.release_date.strftime("%d.%m.%Y") %></time>
+                <% else %>
+                  —
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="A_Text"><%= filters_active ? "Игры не найдены" : "Игр пока нет" %></p>
+    <% end %>
+  </section>
+</main>

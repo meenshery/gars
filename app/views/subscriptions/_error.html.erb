@@ -1,0 +1,5 @@
+<div id="subscription_error" aria-live="polite">
+  <% if subscription.errors.any? %>
+    <p class="A_Text A_Text--adds A_Text--error"><%= subscription.errors.first.message %></p>
+  <% end %>
+</div>

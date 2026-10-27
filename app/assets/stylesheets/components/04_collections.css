@@ -1,0 +1,182 @@
+/* consent list */
+
+.C_ConsentList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* articles */
+
+.C_ArticlesOfTheWeek {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: max-content;
+  transform-origin: top center;
+  will-change: transform;
+}
+
+/* about statement */
+
+.C_AboutStatement {
+  grid-column: 5 / span 6;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 1.984vw, 38px);
+  width: 100%;
+}
+
+/* preview recommended */
+
+.C_PreviewRecommended {
+  position: relative;
+  width: min(100%, 686px);
+  aspect-ratio: 686 / 300;
+  perspective: 1300px;
+  perspective-origin: center center;
+  transform-style: preserve-3d;
+}
+
+/* footer */
+
+.C_MainFooter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0 0 40px;
+  background: transparent;
+}
+
+/* admin menu */
+
+.C_MenuProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+}
+
+/* posts table */
+
+.C_PostsTable {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: var(--font-size-adds);
+  line-height: 1.2;
+}
+
+.C_PostsTable th {
+  height: 40px;
+  padding: 10px 12px;
+  font-weight: 400;
+  text-align: center;
+  background: rgba(88, 114, 127, 0.2);
+}
+
+.C_PostsTable th:first-child {
+  width: 42%;
+  padding-left: 20px;
+  border-radius: 10px 0 0 10px;
+  text-align: left;
+}
+
+.C_PostsTable th:nth-child(2) {
+  width: 22%;
+}
+
+.C_PostsTable th:nth-child(3) {
+  width: 20%;
+}
+
+.C_PostsTable th:last-child {
+  width: 16%;
+  border-radius: 0 10px 10px 0;
+}
+
+.C_PostsTable td {
+  padding: 10px 12px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.C_PostsTable td:first-child {
+  padding-left: 0;
+}
+
+.C_PostsTable tbody tr:first-child td {
+  padding-top: 20px;
+}
+
+.C_PostsTable tbody tr:last-child td {
+  padding-bottom: 0;
+}
+
+/* games and subscriptions tables */
+
+.C_AdminListTable {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: var(--font-size-adds);
+  line-height: 1.4;
+}
+
+.C_AdminListTable th {
+  height: 40px;
+  padding: 10px 20px;
+  font-weight: 400;
+  text-align: left;
+  background: rgba(88, 114, 127, 0.2);
+}
+
+.C_AdminListTable th:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.C_AdminListTable th:last-child {
+  border-radius: 0 10px 10px 0;
+  text-align: center;
+}
+
+.C_AdminListTable td {
+  height: 80px;
+  padding: 10px 20px;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.C_AdminListTable td:last-child {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.C_AdminListTable tbody tr:first-child td {
+  padding-top: 20px;
+}
+
+.C_AdminListTable tbody tr:last-child td {
+  padding-bottom: 0;
+}
+
+.C_AdminListTable--games th:first-child {
+  width: 70%;
+}
+
+.C_AdminListTable--games td:first-child {
+  padding-left: 0;
+}
+
+.C_AdminListTable--subscriptions th:first-child {
+  width: 60%;
+}

@@ -1,0 +1,11 @@
+<% content_for :title, "Новый пост" %>
+
+<main class="O_AdminPosts">
+  <header class="W_AdminPageHeader">
+    <h1 class="A_Heading A_Heading--h1">Новый пост</h1>
+
+    <%= link_to "К постам", admin_posts_path, class: "A_Button A_Button--secondary" %>
+  </header>
+
+  <%= render "form", post: @post %>
+</main>

@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_27_093401) do
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.string "content_type"
+    t.datetime "created_at", null: false
+    t.string "filename", null: false
+    t.string "key", null: false
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
   create_table "collection_games", force: :cascade do |t|
     t.datetime "added_at"
     t.integer "collection_id", null: false
@@ -54,6 +82,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
     t.index ["game_id"], name: "index_dlcs_on_game_id"
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "game_developers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "developer_id", null: false
@@ -72,6 +106,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
     t.index ["game_id", "genre_id"], name: "index_game_genres_on_game_id_and_genre_id", unique: true
     t.index ["game_id"], name: "index_game_genres_on_game_id"
     t.index ["genre_id"], name: "index_game_genres_on_genre_id"
+  end
+
+  create_table "game_modes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "game_id", null: false
+    t.integer "mode_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id", "mode_id"], name: "index_game_modes_on_game_id_and_mode_id", unique: true
+    t.index ["game_id"], name: "index_game_modes_on_game_id"
+    t.index ["mode_id"], name: "index_game_modes_on_mode_id"
   end
 
   create_table "game_platforms", force: :cascade do |t|
@@ -124,17 +168,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
 
   create_table "games", force: :cascade do |t|
     t.string "age_rating"
+    t.string "cover_filename"
     t.datetime "created_at", null: false
     t.text "description"
     t.string "difficulty"
-    t.boolean "has_coop"
     t.boolean "has_russian"
     t.integer "playtime_max"
     t.integer "playtime_min"
     t.date "release_date"
     t.string "session_length"
+    t.string "slug"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_games_on_slug", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
@@ -144,9 +190,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "modes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_modes_on_name", unique: true
+  end
+
   create_table "offers", force: :cascade do |t|
     t.string "activation_type"
     t.boolean "available"
+    t.datetime "checked_at"
     t.datetime "created_at", null: false
     t.string "currency"
     t.integer "game_id", null: false
@@ -165,6 +220,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
     t.string "name"
     t.string "platform_type"
     t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "body", null: false
+    t.string "category"
+    t.string "cover_filename"
+    t.datetime "created_at", null: false
+    t.datetime "published_at"
+    t.string "status", default: "draft", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "price_histories", force: :cascade do |t|
@@ -264,6 +332,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
     t.string "website"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email", null: false
+    t.boolean "notifications_consent", default: false, null: false
+    t.boolean "personal_data_consent", default: false, null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_subscriptions_on_email", unique: true
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "category"
     t.datetime "created_at", null: false
@@ -288,6 +365,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "collection_games", "collections"
   add_foreign_key "collection_games", "games"
   add_foreign_key "collections", "users"
@@ -296,6 +375,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
   add_foreign_key "game_developers", "games"
   add_foreign_key "game_genres", "games"
   add_foreign_key "game_genres", "genres"
+  add_foreign_key "game_modes", "games"
+  add_foreign_key "game_modes", "modes"
   add_foreign_key "game_platforms", "games"
   add_foreign_key "game_platforms", "platforms"
   add_foreign_key "game_publishers", "games"
@@ -307,6 +388,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_205834) do
   add_foreign_key "game_tags", "tags"
   add_foreign_key "offers", "games"
   add_foreign_key "offers", "stores"
+  add_foreign_key "posts", "users"
   add_foreign_key "price_histories", "offers"
   add_foreign_key "profile_genres", "genres"
   add_foreign_key "profile_genres", "profiles"

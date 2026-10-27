@@ -1,0 +1,21 @@
+<div id="feedback_form" class="W_FeedbackPlace">
+  <p id="feedback_status" class="A_FooterLabel" role="<%= feedback.errors.any? ? "alert" : "status" %>">
+    <% if feedback.errors.any? %>
+      <%= feedback.errors.messages[:body].first %>
+    <% elsif sent %>
+      Сообщение отправлено
+    <% else %>
+      будем рады вашей обратной связи
+    <% end %>
+  </p>
+
+  <%= form_with url: feedbacks_path, scope: :feedback, id: "new_feedback", class: "M_FeedbackForm", data: { controller: "feedback", action: "input->feedback#validate turbo:submit-start->feedback#submitStart turbo:submit-end->feedback#submitEnd" } do |form| %>
+    <div class="M_Input M_Input--feedback" data-feedback-target="inputShell">
+      <%= form.text_field :body, value: feedback.body, class: "A_FeedbackInput", placeholder: "ваш текст", autocomplete: "off", required: true, maxlength: 2000, aria: { label: "Текст обратной связи", describedby: "feedback_status", invalid: feedback.errors.any? }, data: { feedback_target: "body" } %>
+
+      <%= button_tag type: "submit", class: "A_ButtonInField A_ButtonInField--feedback", aria: { label: "Отправить обратную связь" }, data: { feedback_target: "button" } do %>
+        <%= image_tag "icons/submit.svg", alt: "", aria: { hidden: true }, draggable: false %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

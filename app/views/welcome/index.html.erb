@@ -1,7 +1,49 @@
-<h1>добро пожаловать!</h1>
+<main class="S_Splash" data-controller="ambient-background" style="--splash-texture: url('<%= asset_path("splash/splash-texture.webp") %>');">
+  <div class="O_AmbientBackground" data-ambient-background-target="layer" aria-hidden="true"></div>
 
-<h3>это сервис для поиска игр по настроению, атмосфере и другим параметрам!</h3>
+  <section class="O_SplashContent">
+    <%= render "application/splash_header" %>
 
-<p>
-  <%= link_to "посмотреть игры", games_path %>
-</p>
+    <div class="W_SplashIntro">
+      <h1 class="A_Heading A_Heading--special">GARS поможет глубже<br> погрузиться в&nbsp;мир игр</h1>
+      <%= link_to "подробнее о нас", about_path, class: "A_Button" %>
+    </div>
+
+    <div class="W_SplashBottom">
+      <p class="A_Text">(делаем <span class="A_TextAccent">супер-пупер</span> новости недели в наших соцсетях или по почте)</p>
+
+      <div class="W_SplashActions">
+        <div class="W_MediaPlace">
+          <div class="M_Socials">
+            <%= link_to "https://t.me/garsmedia", class: "A_SocialLink", target: "_blank", rel: "noopener noreferrer", aria: { label: "GARS в Telegram" } do %>
+              <%= image_tag "icons/telegram.svg", class: "A_SocialIcon", alt: "", aria: { hidden: true }, draggable: false %>
+            <% end %>
+
+            <%= link_to "https://www.threads.com/@gars_media?igshid=NTc4MTIwNjQ2YQ==", class: "A_SocialLink", target: "_blank", rel: "noopener noreferrer", aria: { label: "GARS в Threads" } do %>
+              <%= image_tag "icons/threads.svg", class: "A_SocialIcon", alt: "", aria: { hidden: true }, draggable: false %>
+            <% end %>
+
+            <%= link_to "https://www.instagram.com/gars_media?vrfl=cTk1Zm5qNWRlYXJx&utm_source=qr", class: "A_SocialLink", target: "_blank", rel: "noopener noreferrer", aria: { label: "GARS в Instagram" } do %>
+              <%= image_tag "icons/instagram.svg", class: "A_SocialIcon", alt: "", aria: { hidden: true }, draggable: false %>
+            <% end %>
+          </div>
+
+          <p class="A_Text A_Text--legal">* На сайте содержится ссылка на продукт компании Meta Platforms, Inc., деятельность которой признана экстремистской и запрещена на территории РФ</p>
+        </div>
+
+        <%= render "subscriptions/form", subscription: Subscription.new %>
+      </div>
+    </div>
+  </section>
+
+  <section class="O_BestFromRedaction" aria-label="Лучшее от редакции">
+    <div class="M_ArticlesOfTheWeekBackground">
+      <div class="C_ArticlesOfTheWeek" aria-hidden="true">
+        <%= image_tag "splash/article-cover_02.webp", class: "Q_ArticleCover", alt: "", draggable: false %>
+        <%= image_tag "splash/article-cover_01.webp", class: "Q_ArticleCover", alt: "", draggable: false %>
+        <%= image_tag "splash/article-cover_04.webp", class: "Q_ArticleCover", alt: "", draggable: false %>
+        <%= image_tag "splash/article-cover_03.webp", class: "Q_ArticleCover", alt: "", draggable: false %>
+      </div>
+    </div>
+  </section>
+</main>

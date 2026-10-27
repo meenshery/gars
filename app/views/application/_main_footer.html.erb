@@ -1,0 +1,27 @@
+<footer class="C_MainFooter">
+  <div class="W_MainFooter">
+    <%= link_to root_path, class: "A_LogoLink", aria: { label: "На главную" } do %>
+      <%= image_tag "branding/logo.svg", class: "A_Logo A_Logo--footer", alt: "GARS", draggable: false %>
+    <% end %>
+
+    <div class="W_MediaPlace W_MediaPlace--footer">
+      <p class="A_FooterLabel">наши медиа</p>
+
+      <div class="M_Socials">
+        <%= link_to "https://t.me/garsmedia", class: "A_SocialLink", target: "_blank", rel: "noopener noreferrer", aria: { label: "GARS в Telegram" } do %>
+          <%= image_tag "icons/telegram.svg", class: "A_SocialIcon", alt: "", aria: { hidden: true }, draggable: false %>
+        <% end %>
+
+        <%= link_to "https://www.threads.com/@gars_media?igshid=NTc4MTIwNjQ2YQ==", class: "A_SocialLink", target: "_blank", rel: "noopener noreferrer", aria: { label: "GARS в Threads" } do %>
+          <%= image_tag "icons/threads.svg", class: "A_SocialIcon", alt: "", aria: { hidden: true }, draggable: false %>
+        <% end %>
+
+        <%= link_to "https://www.instagram.com/gars_media?vrfl=cTk1Zm5qNWRlYXJx&utm_source=qr", class: "A_SocialLink", target: "_blank", rel: "noopener noreferrer", aria: { label: "GARS в Instagram" } do %>
+          <%= image_tag "icons/instagram.svg", class: "A_SocialIcon", alt: "", aria: { hidden: true }, draggable: false %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= render "feedbacks/form", feedback: @feedback || Feedback.new, sent: flash[:feedback_sent] %>
+  </div>
+</footer>

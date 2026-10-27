@@ -1,0 +1,136 @@
+/* article cover */
+
+.Q_ArticleCover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 692 / 375;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+/* about video */
+
+.Q_AboutVideo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+/* about shade */
+
+.Q_AboutShade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.4) 30%,
+    rgba(0, 0, 0, 0.4) 70%,
+    #000 100%
+  );
+  pointer-events: none;
+}
+
+/* about texture */
+
+.Q_AboutTexture {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: var(--about-texture);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  mix-blend-mode: hard-light;
+  pointer-events: none;
+}
+
+/* preview recommended */
+
+.Q_PreviewRecommended {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 37.318%;
+  aspect-ratio: 256 / 300;
+  overflow: hidden;
+  border-radius: clamp(14px, 1.323vw, 20px);
+  transform-origin: center;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.Q_PreviewRecommended img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* admin icons and covers */
+
+.Q_IconIntoButton {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  object-fit: contain;
+}
+
+.Q_IconIntoButton--search {
+  width: 16px;
+  height: 16px;
+  flex-basis: 16px;
+}
+
+.Q_PostCover {
+  display: block;
+  width: 60px;
+  height: 60px;
+  flex: 0 0 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.Q_PostCover--empty {
+  background: var(--color-glass-surface);
+}
+
+/* post editor cover */
+
+.Q_PostEditorCover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Q_IconIntoButton--cover {
+  width: 40px;
+  height: 40px;
+  flex-basis: 40px;
+}
+
+/* game cover */
+
+.Q_GameCover {
+  display: block;
+  width: 60px;
+  height: 60px;
+  flex: 0 0 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.Q_GameCover--empty {
+  background: var(--color-glass-surface);
+}

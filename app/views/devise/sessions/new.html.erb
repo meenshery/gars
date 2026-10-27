@@ -1,26 +1,76 @@
-<h2>Log in</h2>
+<% content_for :title, "Вход в аккаунт — GARS" %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
-  </div>
+<main class="S_Login" data-controller="ambient-background">
+  <div class="O_AmbientBackground"
+       data-ambient-background-target="layer"
+       aria-hidden="true"></div>
 
-  <div class="field">
-    <p><%= f.label :password %></p>
-    <p><%= f.password_field :password, autocomplete: "current-password" %></p>
-  </div>
+  <header class="M_LoginNavigation">
+    <%= link_to root_path, class: "A_LogoLink", aria: { label: "GARS — на главную" } do %>
+      <%= image_tag "branding/logo.svg", class: "A_Logo", alt: "GARS" %>
+    <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <p><%= f.check_box :remember_me %></p>
-      <p><%= f.label :remember_me %></p>
+    <%= link_to "на сайт", root_path, class: "A_Button A_Button--secondary" %>
+  </header>
+
+  <%= form_for resource,
+      as: resource_name,
+      url: session_path(resource_name),
+      html: {
+        class: "O_LoginForm",
+        "aria-labelledby": "login-title"
+      } do |form| %>
+
+    <div class="W_LoginHeader">
+      <h1 class="A_Heading A_Heading--h1" id="login-title">
+        Вход в аккаунт
+      </h1>
+
+      <p class="A_Text A_Text--adds A_Text--muted">
+        Войдите, чтобы управлять контентом<br>
+        медиа-сервиса
+      </p>
+    </div>
+
+    <div class="W_FormFields">
+      <div class="M_FormField">
+        <%= form.label :email, "Email", class: "A_Text" %>
+
+        <div class="M_Input">
+          <%= form.email_field :email,
+              class: "A_Input",
+              placeholder: "youremail@example.ru",
+              autocomplete: "email",
+              required: true %>
+        </div>
+      </div>
+
+      <div class="M_FormField">
+        <%= form.label :password, "Пароль", class: "A_Text" %>
+
+        <div class="M_Input">
+          <%= form.password_field :password,
+              class: "A_Input",
+              placeholder: "password",
+              autocomplete: "current-password",
+              required: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="W_LoginCheckbox">
+      <% if devise_mapping.rememberable? %>
+        <%= form.label :remember_me, class: "M_ConsentCheckbox" do %>
+          <%= form.check_box :remember_me,
+              class: "A_CheckboxInput A_CheckboxInput--data" %>
+
+          <span class="A_Text A_Text--adds">Запомнить меня</span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="W_LoginButtons">
+      <%= form.submit "войти в аккаунт", class: "A_Button A_Button--form" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</main>

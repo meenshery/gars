@@ -1,12 +1,8 @@
 <div class="game-page">
   <section>
-
     <div>
       <h1><%= @game.title %></h1>
-
-      <p class="game-description">
-        <%= @game.description %>
-      </p>
+      <p class="game-description"><%= @game.description %></p>
 
       <div class="game-details">
         <p>
@@ -38,88 +34,76 @@
   </section>
 
   <% if @game.dlcs.any? || @game.offers.any? %>
-  <section>
-    <% if @game.dlcs.any? %>
-      <div>
-        <h2>DLC</h2>
+    <section>
+      <% if @game.dlcs.any? %>
+        <div>
+          <h2>DLC</h2>
 
-        <% @game.dlcs.order(:release_date).each do |dlc| %>
-          <article>
-            <h3><%= dlc.title %></h3>
+          <% @game.dlcs.order(:release_date).each do |dlc| %>
+            <article>
+              <h3><%= dlc.title %></h3>
 
-            <% if dlc.description.present? %>
-              <p><%= dlc.description %></p>
-            <% end %>
+              <% if dlc.description.present? %>
+                <p><%= dlc.description %></p>
+              <% end %>
 
-            <% if dlc.release_date.present? %>
-              <p class="game-info">
-                Дата выхода: <%= dlc.release_date %>
-              </p>
-            <% end %>
-          </article>
-        <% end %>
-      </div>
-    <% end %>
+              <% if dlc.release_date.present? %>
+                <p class="game-info">Дата выхода: <%= dlc.release_date %></p>
+              <% end %>
+            </article>
+          <% end %>
+        </div>
+      <% end %>
 
-    <% if @game.offers.any? %>
-      <div>
-        <h2>Где купить</h2>
+      <% if @game.offers.any? %>
+        <div>
+          <h2>Где купить</h2>
 
-        <% @game.offers.each do |offer| %>
-          <article>
-            <div>
-              <strong><%= offer.store.name %></strong>
+          <% @game.offers.each do |offer| %>
+            <article>
+              <div>
+                <strong><%= offer.store.name %></strong>
 
-              <span>
-                <%= number_with_delimiter(offer.price) %>
-                <%= offer.currency %>
-              </span>
-            </div>
+                <span>
+                  <%= number_with_delimiter(offer.price) %>
+                  <%= offer.currency %>
+                </span>
+              </div>
 
-            <% if offer.region.present? %>
-              <p class="game-info">
-                Регион: <%= offer.region %>
-              </p>
-            <% end %>
+              <% if offer.region.present? %>
+                <p class="game-info">Регион: <%= offer.region %></p>
+              <% end %>
 
-            <% if offer.price_histories.any? %>
-              <p><strong>История цены:</strong></p>
+              <% if offer.price_histories.any? %>
+                <p><strong>История цены:</strong></p>
 
-              <ul>
-                <% offer.price_histories.order(recorded_at: :desc).each do |history| %>
-                  <li>
-                    <%= history.recorded_at.to_date %> —
-                    <%= number_with_delimiter(history.price) %>
-                    <%= offer.currency %>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
+                <ul>
+                  <% offer.price_histories.order(recorded_at: :desc).each do |history| %>
+                    <li>
+                      <%= history.recorded_at.to_date %> —
+                      <%= number_with_delimiter(history.price) %>
+                      <%= offer.currency %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
 
-            <% if offer.url.present? %>
-              <p>
-                <%= link_to "Открыть магазин",
-                            offer.url,
-                            target: "_blank",
-                            rel: "noopener" %>
-              </p>
-            <% end %>
-          </article>
-        <% end %>
-      </div>
-    <% end %>
-  </section>
-<% end %>
+              <% if offer.url.present? %>
+                <p><%= link_to "Открыть магазин", offer.url, target: "_blank", rel: "noopener" %></p>
+              <% end %>
+            </article>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
 
   <% if user_signed_in? %>
     <section class="collection-panel">
       <h2>добавить в коллекцию</h2>
 
       <% if current_user.collections.any? %>
-        <%= form_with url: collection_games_path,
-                      method: :post,
-                      class: "collection-form" do |form| %>
-
+        <%= form_with url: collection_games_path, method: :post, class: "collection-form" do |form| %>
           <%= hidden_field_tag :game_id, @game.id %>
 
           <%= select_tag :collection_id,
@@ -140,30 +124,25 @@
   <% end %>
 
   <section class="reviews-section">
-  <h2>отзывы</h2>
+    <h2>отзывы</h2>
 
-  <% if @game.reviews.any? %>
-    <div class="reviews-list">
-      <% @game.reviews.each do |review| %>
-        <article>
-          <div class="review-header">
-            <strong><%= review.user.username %></strong>
+    <% if @game.reviews.any? %>
+      <div class="reviews-list">
+        <% @game.reviews.each do |review| %>
+          <article>
+            <div class="review-header">
+              <strong><%= review.user.username %></strong>
+              <span class="review-rating"><%= review.rating %>/5</span>
+            </div>
 
-            <span class="review-rating">
-              <%= review.rating %>/5
-            </span>
-          </div>
+            <p><%= review.text %></p>
+          </article>
+        <% end %>
+      </div>
+    <% else %>
+      <p>у этой игры еще нет отзывов</p>
+    <% end %>
+  </section>
 
-          <p><%= review.text %></p>
-        </article>
-      <% end %>
-    </div>
-  <% else %>
-    <p>у этой игры еще нет отзывов</p>
-  <% end %>
-</section>
-
-  <p class="back-link">
-    <%= link_to "обратно к играм", games_path %>
-  </p>
+  <p class="back-link"><%= link_to "обратно к играм", games_path %></p>
 </div>

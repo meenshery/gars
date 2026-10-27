@@ -1,0 +1,84 @@
+<% content_for :title, "Посты — GARS admin" %>
+<% status_labels = { "draft" => "черновик", "review" => "на проверке", "published" => "опубликовано" } %>
+<% filters_active = params[:query].present? || params[:category].present? || params[:status].present? || params[:author_id].present? %>
+
+<main class="O_AdminPosts">
+  <header class="W_AdminPageHeader">
+    <h1 class="A_Heading A_Heading--h1">Посты</h1>
+    <%= link_to "Создать пост", new_admin_post_path, class: "A_Button" %>
+  </header>
+
+  <%= form_with url: admin_posts_path, method: :get, class: "W_AdminFilters", html: { style: "--select-arrow: url('#{asset_path("icons/arrow-unwrap.svg")}');" } do |form| %>
+    <div class="M_Input M_Input--search">
+      <%= image_tag "icons/search.svg", class: "Q_IconIntoButton Q_IconIntoButton--search", alt: "" %>
+      <%= form.search_field :query, value: params[:query], class: "A_Input A_Input--search", placeholder: "поиск по названию...", aria: { label: "Поиск постов по названию" } %>
+
+      <%= button_tag type: :submit, class: "A_ButtonInField A_ButtonInField--search", aria: { label: "Применить поиск и фильтры" }, title: "Применить поиск и фильтры" do %>
+        <%= image_tag "icons/submit.svg", alt: "" %>
+      <% end %>
+    </div>
+
+    <%= form.select :category, options_for_select(@categories, params[:category]), { include_blank: "категория" }, class: "A_Select", aria: { label: "Категория поста" } %>
+    <%= form.select :status, options_for_select(status_labels.map { |value, label| [label, value] }, params[:status]), { include_blank: "статус" }, class: "A_Select", aria: { label: "Статус поста" } %>
+    <%= form.collection_select :author_id, @authors, :id, :username, { selected: params[:author_id], include_blank: "автор" }, class: "A_Select", aria: { label: "Автор поста" } %>
+
+    <% if filters_active %>
+      <%= link_to "Сбросить", admin_posts_path, class: "A_Text A_Text--adds A_TextAccent" %>
+    <% end %>
+  <% end %>
+
+  <section class="O_AdminTable" aria-label="Список постов">
+    <% if @posts.any? %>
+      <table class="C_PostsTable">
+        <thead>
+          <tr>
+            <th scope="col">пост</th>
+            <th scope="col">статус</th>
+            <th scope="col">дата</th>
+            <th scope="col">действия</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @posts.each do |post| %>
+            <% cover_source = admin_post_cover_source(post) %>
+
+            <tr>
+              <td>
+                <div class="M_PostPreview">
+                  <% if cover_source.present? %>
+                    <%= image_tag cover_source, class: "Q_PostCover", alt: "" %>
+                  <% else %>
+                    <span class="Q_PostCover Q_PostCover--empty" aria-hidden="true"></span>
+                  <% end %>
+
+                  <%= link_to post.title, edit_admin_post_path(post), class: "A_PostTitle" %>
+                </div>
+              </td>
+
+              <td>
+                <span class="A_Status A_Status--<%= post.status %>"><%= status_labels.fetch(post.status, post.status) %></span>
+              </td>
+
+              <td><%= post.created_at.strftime("%d.%m.%Y") %></td>
+
+              <td>
+                <div class="M_PostActions">
+                  <%= link_to edit_admin_post_path(post), class: "A_Button A_Button--secondary A_Button--icon", aria: { label: "Редактировать пост «#{post.title}»" }, title: "Редактировать" do %>
+                    <%= image_tag "icons/edit.svg", class: "Q_IconIntoButton", alt: "" %>
+                  <% end %>
+
+                  <%= button_to admin_post_path(post), method: :delete, class: "A_Button A_Button--secondary A_Button--icon", aria: { label: "Удалить пост «#{post.title}»" }, title: "Удалить", form: { data: { turbo_confirm: "Удалить пост «#{post.title}»?" } } do %>
+                    <%= image_tag "icons/bin.svg", class: "Q_IconIntoButton", alt: "" %>
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="A_Text"><%= filters_active ? "Посты не найдены" : "Постов пока нет" %></p>
+    <% end %>
+  </section>
+</main>

@@ -1,27 +1,18 @@
 <h1>Мои коллекции</h1>
 
-<p>
-  <%= link_to "создать коллекцию", new_collection_path %>
-</p>
+<p><%= link_to "создать коллекцию", new_collection_path %></p>
 
 <div class="collections-all">
   <% @collections.each do |collection| %>
     <article class="collection-card">
-      <h2>
-        <%= link_to collection.title, collection_path(collection) %>
-      </h2>
+      <h2><%= link_to collection.title, collection_path(collection) %></h2>
 
       <% if collection.description.present? %>
         <p><%= collection.description %></p>
       <% end %>
 
-      <p class="collection-info">
-        Тип: <%= collection.collection_type %>
-      </p>
-
-      <p class="collection-info">
-        Игр: <%= collection.games.count %>
-      </p>
+      <p class="collection-info">Тип: <%= collection.collection_type %></p>
+      <p class="collection-info">Игр: <%= collection.games.count %></p>
 
       <%= link_to "открыть", collection_path(collection) %>
     </article>

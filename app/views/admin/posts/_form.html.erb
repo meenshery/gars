@@ -1,0 +1,59 @@
+<% cover_source = admin_post_cover_source(post) %>
+
+<%= form_with model: [:admin, post], class: "O_PostEditor", html: { multipart: true, style: "--select-arrow: url('#{asset_path("icons/arrow-unwrap.svg")}');" } do |form| %>
+  <% if post.errors.any? %>
+    <div class="M_FormErrors" role="alert">
+      <h2 class="A_Heading A_Heading--h2">Проверьте поля</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li class="A_Text A_Text--error"><%= error.message %></li>
+        <% end %>
+      </ul>
+
+      <% if post.cover.attached? && !post.cover.blob.persisted? %>
+        <p class="A_Text A_Text--adds A_Text--muted">Выберите обложку ещё раз</p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="M_FormField">
+    <%= form.label :title, "Заголовок", class: "A_Text" %>
+    <%= form.text_field :title, class: "A_Input A_Input--editor A_Input--title", placeholder: "Название поста", required: true %>
+  </div>
+
+  <div class="W_PostSettings">
+    <div class="M_FormField">
+      <%= form.label :category, "Категория", class: "A_Text" %>
+      <%= form.text_field :category, class: "A_Input A_Input--editor", placeholder: "Например: Новости" %>
+    </div>
+
+    <div class="M_FormField">
+      <%= form.label :status, "Статус", class: "A_Text" %>
+      <%= form.select :status, [["Черновик", "draft"], ["На проверке", "review"], ["Опубликовано", "published"]], {}, class: "A_Select A_Select--editor" %>
+    </div>
+  </div>
+
+  <div class="M_FormField" data-controller="cover-upload" data-action="turbo:before-cache@document->cover-upload#reset">
+    <%= form.label :cover, "Обложка", class: "A_Text", for: "post_cover" %>
+
+    <div class="M_CoverUpload">
+      <%= tag.img src: cover_source, class: "Q_PostEditorCover", alt: "Обложка поста", hidden: cover_source.blank?, data: { cover_upload_target: "image" } %>
+      <%= image_tag "icons/edit.svg", class: "Q_IconIntoButton Q_IconIntoButton--cover", alt: "", hidden: cover_source.present?, data: { cover_upload_target: "placeholder" } %>
+      <%= form.file_field :cover, id: "post_cover", class: "A_CoverInput", accept: "image/jpeg,image/png,image/webp", aria: { describedby: "post-cover-help" }, data: { cover_upload_target: "input", action: "change->cover-upload#preview" } %>
+    </div>
+
+    <p class="A_Text A_Text--adds A_Text--muted" id="post-cover-help">JPG, PNG, WEBP · до 10 МБ</p>
+    <p class="A_Text A_Text--adds" role="status" aria-live="polite" data-cover-upload-target="message"></p>
+  </div>
+
+  <div class="M_FormField">
+    <%= form.label :body, "Текст поста", class: "A_Text" %>
+    <%= form.text_area :body, class: "A_Input A_Input--editor A_Input--body", rows: 14, placeholder: "текст поста...", required: true %>
+  </div>
+
+  <div class="W_PostEditorActions">
+    <%= form.submit post.persisted? ? "Сохранить" : "Создать пост", class: "A_Button A_Button--form" %>
+    <%= link_to "Отмена", admin_posts_path, class: "A_Button A_Button--secondary" %>
+  </div>
+<% end %>

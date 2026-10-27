@@ -1,0 +1,23 @@
+<%= form_with model: subscription, id: "new_subscription", class: "W_SubscriptionArea", data: { controller: "subscription", action: "input->subscription#validate change->subscription#validate turbo:submit-start->subscription#submitStart turbo:submit-end->subscription#submitEnd" } do |form| %>
+  <div class="M_Input" data-subscription-target="inputShell">
+    <%= form.email_field :email, class: "A_EmailInput", placeholder: "youremail@example.ru", autocomplete: "email", aria: { label: "Email для подписки" }, data: { subscription_target: "email" } %>
+
+    <%= button_tag type: "submit", class: "A_ButtonInField", aria: { label: "Подписаться" }, disabled: true, data: { subscription_target: "button" } do %>
+      <%= image_tag "icons/submit.svg", alt: "", aria: { hidden: true }, draggable: false %>
+    <% end %>
+  </div>
+
+  <div class="C_ConsentList">
+    <label class="M_ConsentCheckbox">
+      <%= form.check_box :personal_data_consent, class: "A_CheckboxInput A_CheckboxInput--data", data: { subscription_target: "personalDataConsent" } %>
+      <span class="A_Text A_Text--adds">Даю согласие на обработку <span class="A_TextAccent">персональных данных</span></span>
+    </label>
+
+    <label class="M_ConsentCheckbox">
+      <%= form.check_box :notifications_consent, class: "A_CheckboxInput A_CheckboxInput--notifications" %>
+      <span class="A_Text A_Text--adds">Даю согласие на получение рассылок и рекламных <span class="A_TextAccent">уведомлений</span></span>
+    </label>
+  </div>
+
+  <%= render "subscriptions/error", subscription: subscription %>
+<% end %>

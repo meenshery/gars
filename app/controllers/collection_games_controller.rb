@@ -13,17 +13,15 @@ class CollectionGamesController < ApplicationController
     collection_game.added_at ||= Time.current
     collection_game.save!
 
-    redirect_to game_path(game), notice: "игра добавлена в коллекцию!"
+    redirect_to game_path(game), notice: "Игра добавлена в коллекцию"
   end
 
   def destroy
     collection_game = CollectionGame.find(params[:id])
-
     collection = current_user.collections.find(collection_game.collection_id)
 
     collection_game.destroy!
 
-    redirect_to collection_path(collection),
-                notice: "игра удалена из коллекции"
+    redirect_to collection_path(collection), notice: "Игра удалена из коллекции"
   end
 end
