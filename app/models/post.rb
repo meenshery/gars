@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_one_attached :cover
 
   validates :title, presence: { message: "заголовок" }
-  validates :body, presence: { message: "екст" }
+  validates :body, presence: { message: "текст" }
   validates :status, inclusion: { in: STATUSES, message: "статус" }
   validate :acceptable_cover
 
